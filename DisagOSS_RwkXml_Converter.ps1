@@ -103,27 +103,29 @@ foreach ($XMLFile in $XMLFiles)
         $TargetDir = New-Item -ItemType Directory -Force -Path $TargetFolder
     }
 
-    # Move Files to Target Folder        
-    $CSVDocument = Get-ChildItem $CSVDocument
-    if(Test-Path $CSVDocument -PathType Leaf){           
-        #Success
-        if($ErrorInFile){ 
-            $MoveTo = $TargetFolder + "\" + "Fehler_" + $CSVDocument.Name
-            Move-Item -Path $CSVDocument -Destination $MoveTo
+    if([System.IO.File]::Exists($CSVDocument)){
+        # Move Files to Target Folder        
+        $CSVDocument = Get-ChildItem $CSVDocument
+        if(Test-Path $CSVDocument -PathType Leaf){           
+            #Success
+            if($ErrorInFile){ 
+                $MoveTo = $TargetFolder + "\" + "Fehler_" + $CSVDocument.Name
+                Move-Item -Path $CSVDocument -Destination $MoveTo
 
-            # Move XML to Folder
-            $MoveTo = $TargetFolder + "\" + 'Fehler_' + $XMLFile.Name
-            Move-Item -Path $XMLFile -Destination $MoveTo
+                # Move XML to Folder
+                $MoveTo = $TargetFolder + "\" + 'Fehler_' + $XMLFile.Name
+                Move-Item -Path $XMLFile -Destination $MoveTo
+            }
+            # Error
+            if(!$ErrorInFile){ 
+                # Move CSV to Folder   
+                $MoveTo = $TargetFolder + "\" + $CSVDocument.Name
+                move-Item -Path $CSVDocument -Destination $MoveTo
+
+                # Move XML to Folder
+                $MoveTo = $TargetFolder + "\" + $XMLFile.Name
+                Move-Item -Path $XMLFile -Destination $MoveTo
+            }        
         }
-        # Error
-        if(!$ErrorInFile){ 
-            # Move CSV to Folder   
-            $MoveTo = $TargetFolder + "\" + $CSVDocument.Name
-            move-Item -Path $CSVDocument -Destination $MoveTo
-
-            # Move XML to Folder
-            $MoveTo = $TargetFolder + "\" + $XMLFile.Name
-            Move-Item -Path $XMLFile -Destination $MoveTo
-        }        
     }
 }
