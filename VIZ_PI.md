@@ -26,6 +26,7 @@ cd VIZ
 java -classpath classes:lib/log4j-1.2.8.jar:lib/forms.jar:lib/jcommon-1.0.15.jar:lib/jgoodies-common-1.2.1.jar BeamerView ressources.txt
 ```
 
+Mittels STRG+X und die Abfrage mit J für Yes bestätigen. Der Nano Editor wird geschlossen und die Datei gespeichert.
 
 ## 3. Die Shell .sh Datei in den Autostart aufnehmen:
 
