@@ -30,6 +30,8 @@ Mittels STRG+X und die Abfrage mit J für Yes bestätigen. Der Nano Editor wird 
 
 ## 3. Die Shell .sh Datei in den Autostart aufnehmen:
 
+Hinweis: Wenn der autostart Ordner nicht existiert mittel "mkdir autostart" den Ordner anlegen und anschließend mit "cd autostart" in den Ordner wechseln
+
 ```
 cd /home/pi
 
@@ -37,10 +39,14 @@ sudo chmod +x startViz.sh
 
 cd ~/.config
 
-cd autostart Hinweis: Wenn der autostart Ordner nicht existiert mittel "mkdir autostart" den Ordner anlegen und anschließend mit "cd autostart" in den Ordner wechseln
+mkir autostart
+
+cd autostart 
 
 sudo nano VNC.desktop
 ```
+
+Hinweis: Wenn der autostart Ordner nicht existiert mittel "mkdir autostart" den Ordner anlegen und anschließend mit "cd autostart" in den Ordner wechseln
 
 Der Nano Editor ist geöffnet nun folgendes darin erfassen:
 ```
